@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="author" content="Paweł Izdebski">
+   <meta name="description" content="Do a simple quick code quize to check your dev knowledge">
+   <title>Code Quiz</title>
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+   <header>
+      <img src="assets/logo.svg" alt="logo">
+   </header>
+
+   <main>
+      <section id="top">
+         <span id="score">Score: <span class="scoreCount">0</span></span>
+         <button id="next">Next Question</button>
+      </section>
+      <section id="quiz">
+
+         <!-- question box -->
+         <div id="questionWrap">
+            <h2>Question:</h2>
+            <p id="question"></p>
+         </div>
+
+         <!-- quiz answers box -->
+         <div id="answersBox">
+            <button class="answerBtn">A: <span class="answerSpan 1"></span></button>
+            <button class="answerBtn">B: <span class="answerSpan 2"></span></button>
+            <button class="answerBtn">C: <span class="answerSpan 3"></span></button>
+            <button class="answerBtn">D: <span class="answerSpan 4"></span></button>
+         </div>
+
+      </section>
+
+   </main>
+
+   <footer>
+      <p>Paweł Izdebski 2021 &copy;</p>
+      <a href="https://github.com/zucek20/CodeQuiz" target="_blank">github</a>
+   </footer>
+
+   <script src="dist/app.js"></script>
+</body>
+
+</html>
