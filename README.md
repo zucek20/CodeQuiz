@@ -15,6 +15,7 @@ You can download my project from github repository and use it or click [this lin
 After you downloaded repository from github you can just open **index.html** file.
 
 <hr>
+
 #### License
 
-You can find license in **LICENSE.txt** file in the repository.
+You can find MIT license in **LICENSE.txt** file in the repository.

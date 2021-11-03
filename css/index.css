@@ -23,6 +23,11 @@ main {
    display: flex;
    flex-direction: column;
    align-items: center;
+   /* centering container */
+   position: absolute;
+   top: 40%;
+   left: 50%;
+   transform: translateX(-50%);
 }
 
 /* logo */
@@ -35,7 +40,7 @@ img {
 }
 
 main p {
-   margin: 100px 10px;
+   margin: 20px 10px;
    font-size: 20px;
    font-family: Cairo, sans-serif;
    padding-bottom: 10px;
@@ -66,7 +71,7 @@ footer {
    width: 100%;
    justify-content: center;
    position: absolute;
-   bottom: 30px;
+   bottom: 10px;
 }
 
 footer a {
@@ -79,10 +84,11 @@ footer a:hover {
    text-decoration: underline;
 }
 
+/* landscape oriented devices */
 @media screen and (orientation: landscape) {
    
    header img {
-      height: 50px;
+      width: 50%;
    }
    
    main p {
