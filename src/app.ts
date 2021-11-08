@@ -1,3 +1,4 @@
+
 import { answersArr } from "./list.js";
 
 // a set of variables of certain HTML elements that are used in code
