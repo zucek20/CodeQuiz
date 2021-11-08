@@ -82,6 +82,10 @@ section#top #next.active {
   opacity: 1;
 }
 
+section#top #next.hidden {
+  opacity: 0;
+}
+
 section#quiz #questionWrap {
   min-height: 100px;
   background-color: rgba(34, 34, 34, 0.87);
@@ -129,6 +133,7 @@ section#quiz #answersBox button.answerBtn {
 
 section#quiz #answersBox button.answerBtn:hover {
   border: 2px solid royalblue;
+  background-color: #292929;
 }
 
 section#quiz #answersBox button.answerBtn.correct {

@@ -8,62 +8,98 @@ const answerBtns = document.querySelectorAll(".answerBtn");
 const answerSpans = document.querySelectorAll(".answerSpan");
 
 // array of objects containing questions for quiz and their answers
-const questionsArr: { text: string; answer: string }[] = [];
+const questionsArr: { text: string; answer: number }[] = [];
 
+let score: number = 0
 // class for constructing questions
 class Question {
   text: string;
-  answer: string;
+  answer: number;
 
-  constructor(text: string, answer: string) {
+  constructor(text: string, answer: number) {
     this.text = text;
     this.answer = answer;
   }
 }
 
 // constructing questons for quiz
-const question1 = new Question("HTML stands for", "B");
-const question2 = new Question("Most popular front-end framework in 2021", "C");
+const question1 = new Question("HTML stands for", 2);
+const question2 = new Question("Most popular front-end framework in 2021", 3);
 const question3 = new Question(
   "JavaScript concept that exactly deals with repetition in objects",
-  "A"
+  1
 );
-const question4 = new Question("Creator of C programming language", "B");
-const question5 = new Question("The year JavaScript was created", "D");
-const question6 = new Question("Back-end framework that use PHP", "B");
+const question4 = new Question("Creator of C programming language", 2);
+const question5 = new Question("The year JavaScript was created", 4);
+const question6 = new Question("Back-end framework that use PHP", 2);
 const question7 = new Question(
   "Most popular tool that provides version control",
-  "A"
+  1
 );
 const question8 = new Question(
   "Concept of function calling itself in its body",
-  "C"
+  3
 );
-const question9 = new Question("Which language is interpreted?", "A");
-const question10 = new Question("JSON stands for...", "C");
+const question9 = new Question("Which language is interpreted?", 1);
+const question10 = new Question("JSON stands for...", 3);
 const question11 = new Question(
   "Data structure that contains pairs of keys and values",
-  "D"
+  4
 );
-const question12 = new Question("What is an IDE?", "A");
+const question12 = new Question("What is an IDE?", 1);
 
 //push each question to questionsArr
 questionsArr.push(question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12)
 
+// variable to store current question number
+let count: number = 0
 
 // function that check if answer is correct. If correct: it paints it green, wrong: red and allows to go to next question.
 function checkAnswer(): void {
+   // variable to store current question object
+   let currentQuestion: object = questionsArr[count -1]
    
+   if (currentQuestion.answer == this.classList[1]) {
+      this.classList.add('correct')
+      nextBtn.addEventListener('click', next)
+      nextBtn.classList.add('active')
+      score++
+      scoreCount.textContent = score.toString()
+      console.log(count)
+      // protect to further mistakes after correct answer checked
+      for (let i = 0; i < answerBtns.length; i++) {
+         answerBtns[i].removeEventListener('click', checkAnswer)
+      }
+   } else { // if wrong answer picked
+      this.classList.add('wrong')
+      score--
+      scoreCount.textContent = score.toString()
+      console.log(count)
+   }
+   console.log(currentQuestion)
 }
 
-// variable to store current question number
-let count: number = 0
+
+
 
 // variable to store answerSpan class number
 let ansCount: number = 1
 
 // function that update question and answers spans. Reset classes
 function next(): void {
+   if (count == 12) {
+      nextBtn.classList.add('hidden')
+      alert(`You completed quiz with score: ${score}`)
+      // protect from additional score decrementation
+      for (let i = 0; i < answerBtns.length; i++) {
+         removeEventListener('click', checkAnswer)
+      }
+   }
+   for (let i = 0; i < answerBtns.length; i++) {
+      answerBtns[i].addEventListener('click', checkAnswer)
+   }
+   nextBtn.removeEventListener('click', next)
+   nextBtn.classList.remove('active')
    questionText.textContent = questionsArr[count].text // update question textContent
 
    // loop that assigns textContent to every answer span
@@ -89,12 +125,18 @@ function next(): void {
       
          default:
             break;
-      }
+         }
+   }
+   
+   // clear buttons classes
+   for (let i = 0; i < answerBtns.length; i++) {
+      answerBtns[i].classList.remove('wrong')
+      answerBtns[i].classList.remove('correct')
    }
    count++
 }
 
-// loop for listening event on buttons to check if answer is correct
+// add listening event on buttons to check if answer is correct
 for (let i = 0; i < answerBtns.length; i++) {
    answerBtns[i].addEventListener('click', checkAnswer)
 }

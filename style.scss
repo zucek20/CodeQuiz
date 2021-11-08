@@ -76,6 +76,9 @@ section#top {
          cursor: pointer;
          opacity: 1;
       }
+      &.hidden {
+         opacity: 0;
+      }
    }
 }
 
@@ -122,6 +125,7 @@ section#quiz {
          
          &:hover {
             border: 2px solid royalblue;
+            background-color: rgb(41, 41, 41);
          }
          
          //===============
