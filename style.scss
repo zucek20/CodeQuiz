@@ -65,11 +65,13 @@ section#top {
       font-size: 18px;
       transition: background-color .1s;
       opacity: .5;
+      cursor: not-allowed;
       
       &:hover {
          background-color: $orangeHover;
       }
       
+      // toggle this class in script
       &.active {
          cursor: pointer;
          opacity: 1;

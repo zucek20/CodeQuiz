@@ -70,6 +70,7 @@ section#top #next {
   -webkit-transition: background-color .1s;
   transition: background-color .1s;
   opacity: .5;
+  cursor: not-allowed;
 }
 
 section#top #next:hover {

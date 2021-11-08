@@ -1,48 +1,14 @@
+import { answersArr } from "./list.js";
+
 // a set of variables of certain HTML elements that are used in code
-const scoreCount = document.querySelector(".scoreCount");
+const scoreCount = document.querySelector(".scoreCount") as HTMLSpanElement;
 const nextBtn = document.querySelector("#next") as HTMLButtonElement;
-const questionText = document.querySelector("#questionText");
+const questionText = document.querySelector("#questionText") as HTMLSpanElement;
 const answerBtns = document.querySelectorAll(".answerBtn");
 const answerSpans = document.querySelectorAll(".answerSpan");
 
 // array of objects containing questions for quiz and their answers
-const questionsArr: { question: string; answer: string }[] = [];
-
-// multidimesional array od string containing answers
-const answersArr: string[][] = [
-  [
-    "High Text MultiLanguage",
-    "HyperText Markup Language",
-    "HighText Multi Line",
-    "History Testing Markup Language",
-  ],
-  ["Vue", "Angular", "React", "Svelte"],
-  ["for in", "while", "for of", "forEach"],
-  [
-    "Bjarne Stroustrup",
-    "Dennis Ritchie",
-    "Guido van Rossum",
-    "Yukihiro Matsumoto",
-  ],
-  ["1998", "1990", "2001", "1995"],
-  ["Node", "Laravel", "Spring boot", "Flask"],
-  ["Git", "Mercurial", "CVS", "Bazaar"],
-  ["Destructuring", "Polymorphism", "Recursion", "Callback"],
-  ["Python", "C++", "Rust", "Go"],
-  [
-    "Java syntax object node",
-    "JavaScript oriented node",
-    "JavaScript object notation",
-    "Java system oriented notaton",
-  ],
-  ["Array", "Boolean", "String", "Object"],
-  [
-    "Integrated Development Environment",
-    "Initial Data Extraction",
-    "Inner Data Export",
-    "Initial Development Environment",
-  ],
-];
+const questionsArr: { text: string; answer: string }[] = [];
 
 // class for constructing questions
 class Question {
@@ -81,3 +47,59 @@ const question11 = new Question(
 );
 const question12 = new Question("What is an IDE?", "A");
 
+//push each question to questionsArr
+questionsArr.push(question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12)
+
+
+// function that check if answer is correct. If correct: it paints it green, wrong: red and allows to go to next question.
+function checkAnswer(): void {
+   
+}
+
+// variable to store current question number
+let count: number = 0
+
+// variable to store answerSpan class number
+let ansCount: number = 1
+
+// function that update question and answers spans. Reset classes
+function next(): void {
+   questionText.textContent = questionsArr[count].text // update question textContent
+
+   // loop that assigns textContent to every answer span
+   for (let i = 0; i < answerSpans.length; i++) {
+      const span = answerSpans[i]
+      switch (ansCount) {
+         case 1:
+            span.textContent = answersArr[count][0]
+            ansCount++
+            break;
+         case 2:
+            span.textContent = answersArr[count][1]
+            ansCount++
+            break;
+         case 3:
+            span.textContent = answersArr[count][2]
+            ansCount++
+            break;
+         case 4:
+            span.textContent = answersArr[count][3]
+            ansCount = 1 // reset ansCount
+            break;
+      
+         default:
+            break;
+      }
+   }
+   count++
+}
+
+// loop for listening event on buttons to check if answer is correct
+for (let i = 0; i < answerBtns.length; i++) {
+   answerBtns[i].addEventListener('click', checkAnswer)
+}
+
+// load first question when page load
+window.addEventListener('load', event => {
+   next()
+})
