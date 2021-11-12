@@ -23,7 +23,8 @@ class Question {
   }
 }
 
-// constructing questons for quiz
+// constructing questons for quiz. Propably good to refactor to some kind of loop?
+// second argument is equivalent od the answer: 1=A, 2=B, 3=C, 4=D
 const question1 = new Question("HTML stands for", 2);
 const question2 = new Question("Most popular front-end framework in 2021", 3);
 const question3 = new Question(
@@ -56,9 +57,9 @@ questionsArr.push(question1, question2, question3, question4, question5, questio
 let count: number = 0
 
 // function that check if answer is correct. If correct: it paints it green, wrong: red and allows to go to next question.
-function checkAnswer(): void {
+function checkAnswer(this: any): void {
    // variable to store current question object
-   let currentQuestion: object = questionsArr[count -1]
+   let currentQuestion = questionsArr[count -1]
    
    if (currentQuestion.answer == this.classList[1]) {
       this.classList.add('correct')
@@ -66,8 +67,7 @@ function checkAnswer(): void {
       nextBtn.classList.add('active')
       score++
       scoreCount.textContent = score.toString()
-      console.log(count)
-      // protect to further mistakes after correct answer checked
+      // protect from further mistakes after correct answer checked
       for (let i = 0; i < answerBtns.length; i++) {
          answerBtns[i].removeEventListener('click', checkAnswer)
       }
@@ -75,11 +75,8 @@ function checkAnswer(): void {
       this.classList.add('wrong')
       score--
       scoreCount.textContent = score.toString()
-      console.log(count)
    }
-   console.log(currentQuestion)
 }
-
 
 
 
@@ -88,16 +85,16 @@ let ansCount: number = 1
 
 // function that update question and answers spans. Reset classes
 function next(): void {
-   if (count == 12) {
-      nextBtn.classList.add('hidden')
-      alert(`You completed quiz with score: ${score}`)
-      // protect from additional score decrementation
-      for (let i = 0; i < answerBtns.length; i++) {
-         removeEventListener('click', checkAnswer)
-      }
-   }
    for (let i = 0; i < answerBtns.length; i++) {
       answerBtns[i].addEventListener('click', checkAnswer)
+   }
+   if (count == questionsArr.length) {
+      nextBtn.classList.add('hidden')
+      alert(`You completed quiz with score: ${score}`)
+      // protect from additional score decrementation after game is finished
+      for (let i = 0; i < answerBtns.length; i++) {
+         answerBtns[i].removeEventListener('click', checkAnswer)
+      }
    }
    nextBtn.removeEventListener('click', next)
    nextBtn.classList.remove('active')

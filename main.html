@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Paweł Izdebski" />
+    <meta
+      name="description"
+      content="Do a simple quick code quize to check your dev knowledge"
+    />
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+  </head>
 
-<head>
-   <meta charset="UTF-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta name="author" content="Paweł Izdebski" />
-   <meta name="description" content="Do a simple quick code quize to check your dev knowledge" />
-   <title>Code Quiz</title>
-   <link rel="stylesheet" href="css/style.css" />
-   <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
-</head>
+  <body>
+    <header>
+      <a href="https://zucek20.github.io/CodeQuiz/">
+        <img src="./assets/Logo.svg" alt="logo" />
+      </a>
+    </header>
 
-<body>
-   <header>
-      <img src="./assets/Logo.svg" alt="logo" />
-   </header>
-
-   <main>
+    <main>
       <section id="top">
-         <span id="score">score: <span class="scoreCount">0</span></span>
-         <button id="next" class="">Next Question</button>
+        <span id="score">score: <span class="scoreCount">0</span></span>
+        <button id="next" class="">Next Question</button>
       </section>
 
       <section id="quiz">
-         <!-- question box -->
-         <div id="questionWrap">
-            <h2>Question:</h2>
-            <p id="questionText"></p>
-         </div>
+        <!-- question box -->
+        <div id="questionWrap">
+          <h2>Question:</h2>
+          <p id="questionText"></p>
+        </div>
 
-         <!-- quiz answers box -->
-         <div id="answersBox">
-            <button class="answerBtn 1 ">
-               A: <span class="answerSpan 1"></span>
-            </button>
-            <button class="answerBtn 2">
-               B: <span class="answerSpan 2"></span>
-            </button>
-            <button class="answerBtn 3">
-               C: <span class="answerSpan 3"></span>
-            </button>
-            <button class="answerBtn 4">
-               D: <span class="answerSpan 4"></span>
-            </button>
-         </div>
+        <!-- quiz answers box -->
+        <div id="answersBox">
+          <button class="answerBtn 1">
+            A: <span class="answerSpan 1"></span>
+          </button>
+          <button class="answerBtn 2">
+            B: <span class="answerSpan 2"></span>
+          </button>
+          <button class="answerBtn 3">
+            C: <span class="answerSpan 3"></span>
+          </button>
+          <button class="answerBtn 4">
+            D: <span class="answerSpan 4"></span>
+          </button>
+        </div>
       </section>
-   </main>
+    </main>
 
-   <footer>
+    <footer>
       <p>Paweł Izdebski 2021 &copy;</p>
       <a href="https://github.com/zucek20/CodeQuiz" target="_blank">Github</a>
-   </footer>
+    </footer>
 
-   <script type="module" src="dist/app.js"></script>
-</body>
-
+    <script type="module" src="dist/app.js"></script>
+  </body>
 </html>

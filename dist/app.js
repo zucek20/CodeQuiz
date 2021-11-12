@@ -15,7 +15,7 @@ class Question {
         this.answer = answer;
     }
 }
-// constructing questons for quiz
+// constructing questons for quiz. Propably good to refactor to some kind of loop?
 const question1 = new Question("HTML stands for", 2);
 const question2 = new Question("Most popular front-end framework in 2021", 3);
 const question3 = new Question("JavaScript concept that exactly deals with repetition in objects", 1);
@@ -42,32 +42,31 @@ function checkAnswer() {
         nextBtn.classList.add('active');
         score++;
         scoreCount.textContent = score.toString();
-        console.log(count);
+        // protect from further mistakes after correct answer checked
         for (let i = 0; i < answerBtns.length; i++) {
             answerBtns[i].removeEventListener('click', checkAnswer);
         }
     }
-    else {
+    else { // if wrong answer picked
         this.classList.add('wrong');
         score--;
         scoreCount.textContent = score.toString();
-        console.log(count);
     }
-    console.log(currentQuestion);
 }
 // variable to store answerSpan class number
 let ansCount = 1;
 // function that update question and answers spans. Reset classes
 function next() {
-    if (count == 12) {
-        nextBtn.classList.add('hidden');
-        alert(`You completed quiz with score: ${score}`);
-        for (let i = 0; i < answerBtns.length; i++) {
-            removeEventListener('click', checkAnswer);
-        }
-    }
     for (let i = 0; i < answerBtns.length; i++) {
         answerBtns[i].addEventListener('click', checkAnswer);
+    }
+    if (count == questionsArr.length) {
+        nextBtn.classList.add('hidden');
+        alert(`You completed quiz with score: ${score}`);
+        // protect from additional score decrementation
+        for (let i = 0; i < answerBtns.length; i++) {
+            answerBtns[i].removeEventListener('click', checkAnswer);
+        }
     }
     nextBtn.removeEventListener('click', next);
     nextBtn.classList.remove('active');
