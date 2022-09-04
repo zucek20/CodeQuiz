@@ -2,14 +2,12 @@
 
 ## What is CodeQuiz?
 
-This is a project of my small quiz game for software developers. You can open project and play to check your dev knowledge.
+💡 This is a project of my small quiz game for software developers. You can open project and play to check your dev knowledge.
 
 Quiz uses of simple data structures such as nested arrays to render data.
 
-## Instalation
-
-You can download my project from github repository and use it.
-
+## Design 
+🖍️ Project was designed in Figma [here](https://www.figma.com/file/BNguR8Wp2IpL6PP346LepM/CodeQuiz).
 
 ## Usage
 
